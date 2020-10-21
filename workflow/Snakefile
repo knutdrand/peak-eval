@@ -6,15 +6,16 @@ report: "report/workflow.rst"
 
 # Allow users to fix the underlying OS via singularity.
 singularity: "docker://continuumio/miniconda3"
-
+include: "rules/common.smk"
 
 rule all:
     input:
+        expand("results/plots/motif/{regions}/{combo}.png", regions=["peaks", "summit_regions"], combo=combos)
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
 
 
-include: "rules/common.smk"
+
 include: "rules/other.smk"
 include: "rules/peakcalling.smk"
 include: "rules/motifs.smk"

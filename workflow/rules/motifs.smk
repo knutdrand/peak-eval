@@ -40,7 +40,7 @@ rule motif_plot:
         matches="results/{caller}/motif_matches_{regions}/{sample}/fimo.tsv",
         peaks="results/{caller}/sorted_{regions}/{sample}.narrowPeak"
     output:
-        report("results/{caller}/motif_plots/{regions}/{sample}.png", category="Motif_plots"),
+        "results/{caller}/motif_plots/{regions}/{sample}.png",
         "results/{caller}/motif_plots/{regions}/{sample}.pkl"
     script:
         "../scripts/motifplot.py"

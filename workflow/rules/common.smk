@@ -12,4 +12,6 @@ validate(config, schema="../schemas/config.schema.yaml")
 
 samples = pd.read_csv(config["samples"], sep="\t").set_index("sample", drop=False)
 print(samples)
+combos = {f"{celltype}_{condition}" for celltype, condition in zip(samples["celltype"], samples["condition"])}
+
 validate(samples, schema="../schemas/samples.schema.yaml")
