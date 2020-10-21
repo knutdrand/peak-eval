@@ -3,4 +3,4 @@
 # one row per sample. It can be parsed easily via pandas.
 samples: "config/samples.tsv"
 reference_fasta: "/home/knut/Data/hg38/chr1.fa"
-callers: ["macs2", "filtered_hmmcaller", "hmmcaller"]
+callers: ["macs2", "filtered_hmmacs", "hmmacs"]

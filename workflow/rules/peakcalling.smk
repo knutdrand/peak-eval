@@ -11,20 +11,20 @@ rule macs_wo_control:
     shell:
         """macs2 callpeak -t {input.treatment} -g 3000000 --bdg --outdir results/macs2_folder/ -n {wildcards.celltype}_{wildcards.condition} --nomodel --extsize 176"""
 
-rule hmmcaller_wo_control:
+rule hmmacs_wo_control:
     input:
         treatment="results/macs2_folder/{sample}_treat_pileup.bdg",
         control="results/macs2_folder/{sample}_control_lambda.bdg"
     output:
-        "results/hmmcaller/peaks/{sample}.narrowPeak"
+        "results/hmmacs/peaks/{sample}.narrowPeak"
     shell:
-        "hmmcaller {input.treatment} {input.control} {output}"
+        "hmmacs {input.treatment} {input.control} {output}"
 
-rule filter_hmmcaller:
+rule filter_hmmacs:
     input:
         "results/hmmcaller/peaks/{sample}.narrowPeak"
     output:
-        "results/filtered_hmmcaller/peaks/{sample}.narrowPeak"
+        "results/filtered_hmmacs/peaks/{sample}.narrowPeak"
     shell:
         "awk '{{if ($3-$2>=176) print}}' {input} > {output}"
 
