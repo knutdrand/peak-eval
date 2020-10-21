@@ -45,3 +45,11 @@ rule move_macs_peaks:
         "results/macs2/peaks/{sample}.narrowPeak"
     shell:
         "mv {input} {output}"
+
+rule summit_regions:
+    input:
+        "results/{caller}/peaks/{sample}.narrowPeak"
+    output:
+        "results/{caller}/summit_regions/{sample}.narrowPeak"
+    shell:
+        """awk '{{OFS="\t"}}{{print $1, $2+$10-200, $2+$10+200, ".", $5}}' {input} > {output}"""
