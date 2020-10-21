@@ -5,7 +5,7 @@ rule get_meme:
     output:
         "results/motifs/{condition}.meme"
     run:
-        shell('wget {jaspar_address}%s -O {output} --user-agent="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"' % motifs[wildcards.condition])
+        shell('wget {jaspar_address}%s.meme -O {output} --user-agent="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"' % motifs[wildcards.condition])
 
 rule motif_enrichment:
     input:
