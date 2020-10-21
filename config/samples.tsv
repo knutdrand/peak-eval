@@ -1,3 +1,2 @@
-sample	condition
-A	untreated
-B	treated
+sample	condition	celltype
+ENCFF494VZW	CTCF	K562

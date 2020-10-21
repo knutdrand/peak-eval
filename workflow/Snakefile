@@ -16,3 +16,5 @@ rule all:
 
 include: "rules/common.smk"
 include: "rules/other.smk"
+include: "rules/peakcalling.smk"
+include: "rules/motifs.smk"
