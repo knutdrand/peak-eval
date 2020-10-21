@@ -22,7 +22,7 @@ rule hmmacs_wo_control:
 
 rule filter_hmmacs:
     input:
-        "results/hmmcaller/peaks/{sample}.narrowPeak"
+        "results/hmmacs/peaks/{sample}.narrowPeak"
     output:
         "results/filtered_hmmacs/peaks/{sample}.narrowPeak"
     shell:
