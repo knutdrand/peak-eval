@@ -1,4 +1,4 @@
-motifs = {"CTCF": "MA0139.1", "ATF3": "MA0605.2"}
+motifs = {"CTCF": "MA0139.1", "ATF3": "MA0605.2", "MAFK": "MA0496.1"}
 jaspar_address = "http://jaspar.genereg.net/api/v1/matrix/"
 
 rule get_meme:
@@ -33,7 +33,7 @@ rule motif_enrichment:
     output:
         multiext("results/{caller}/motif_matches_{regions}/{celltype}_{condition}/fimo", ".html", ".xml", ".tsv", ".gff") 
     shell:
-        "fimo --qv-thresh --thresh 0.05 --oc results/{wildcards.caller}/motif_matches_{wildcards.regions}/{wildcards.celltype}_{wildcards.condition}/ {input.meme} {input.fasta}"
+        "fimo --oc results/{wildcards.caller}/motif_matches_{wildcards.regions}/{wildcards.celltype}_{wildcards.condition}/ {input.meme} {input.fasta}"
 
 rule motif_plot:
     input:
